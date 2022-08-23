@@ -749,7 +749,7 @@ function Icon({ icon }) {
           </div>
         </Transition>
       </div>
-      <div className="mt-3 truncate text-center text-[0.8125rem] leading-6 text-slate-500">
+      <div className="mt-3 truncate text-center text-[0.8125rem] leading-6 text-slate-500" title={icon.name}>
         {icon.name}
       </div>
     </div>
