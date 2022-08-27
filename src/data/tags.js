@@ -251,6 +251,7 @@ export const tags = {
   user: ['account', 'person', 'profile'],
   'user-circle': ['account', 'person', 'profile'],
   'user-plus': ['account', 'person', 'profile', 'user-add'],
+  'user-minus': ['account', 'person', 'profile', 'user-delete', 'user-remove'],
   'video-camera': ['movie', 'record'],
   'video-camera-slash': ['movie', 'record', 'stop'],
   wifi: ['connection', 'online', 'signal', 'wireless'],
