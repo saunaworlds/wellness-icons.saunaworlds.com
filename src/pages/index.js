@@ -928,7 +928,7 @@ function Blur(props) {
 
 function Icons({ icons, query }) {
   let filteredIcons = query
-    ? matchSorter(icons, query, { keys: ['name', 'tags'] })
+    ? matchSorter(icons, query.replace(/\s+/, '-'), { keys: ['name', 'tags'] })
     : icons
 
   if (query && filteredIcons.length === 0) {
