@@ -27,29 +27,29 @@ function MyApp({ Component, pageProps }) {
           content="Beautiful hand-crafted SVG icons, by the makers of Tailwind CSS."
           name="description"
         />
-        <meta property="og:url" content="https://heroicons.com" />
+        <meta property="og:url" content="https://wellness-icons.saunaworlds.com" />
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Heroicons" />
+        <meta property="og:site_name" content="wellness-icons" />
         <meta
           property="og:description"
           content="Beautiful hand-crafted SVG icons, by the makers of Tailwind CSS."
         />
-        <title>Heroicons</title>
-        <meta property="og:title" content="Heroicons" />
+        <title>wellness-icons</title>
+        <meta property="og:title" content="wellness-icons" />
         <meta
           property="og:image"
-          content={`https://heroicons.com${require('@/images/social-card.jpg').default.src}`}
+          content={`https://wellness-icons.saunaworlds.com${require('@/images/social-card.jpg').default.src}`}
         />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@tailwindlabs" />
-        <meta name="twitter:title" content="Heroicons" />
+        <meta name="twitter:title" content="wellness-icons" />
         <meta
           name="twitter:description"
           content="Beautiful hand-crafted SVG icons, by the makers of Tailwind CSS."
         />
         <meta
           name="twitter:image"
-          content={`https://heroicons.com${require('@/images/social-card.jpg').default.src}`}
+          content={`https://wellness-icons.saunaworlds.com${require('@/images/social-card.jpg').default.src}`}
         />
       </Head>
       <Component {...pageProps} />

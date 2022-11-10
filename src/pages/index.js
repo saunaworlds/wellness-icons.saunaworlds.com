@@ -6,6 +6,8 @@ import Image from 'next/future/image'
 import { matchSorter } from 'match-sorter'
 import { tags } from '@/data/tags'
 
+import { latestVersion, packageName, githubUrl } from '@/data/content'
+
 function importIcons(r, attrs) {
   return r
     .keys()
@@ -24,29 +26,17 @@ const icons1 = importIcons(
   require.context(`heroicons/24/outline/`, false, /\.svg$/),
   'class="w-6 h-6"'
 )
-const icons2 = importIcons(
-  require.context(`heroicons/24/solid/`, false, /\.svg$/),
-  'class="w-6 h-6"'
-)
-const icons3 = importIcons(
-  require.context(`heroicons/20/solid/`, false, /\.svg$/),
-  'class="w-5 h-5"'
-)
 
 function Logo(props) {
   return (
-    <svg viewBox="0 0 880 166" fill="none" aria-hidden="true" {...props}>
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="m78.091 0 5.967 5.676c15.038 14.306 35.323 23.067 57.663 23.067.356 0 .711-.002 1.065-.006l6.363-.08 1.988 6.072a102.026 102.026 0 0 1 5.045 31.782c0 47.391-32.269 87.19-75.928 98.477l-2.163.559-2.163-.559C32.27 153.701 0 113.902 0 66.511c0-11.085 1.769-21.772 5.045-31.782l1.988-6.072 6.363.08c.354.004.71.006 1.065.006 22.34 0 42.625-8.761 57.664-23.067L78.09 0ZM19.846 46.033a84.814 84.814 0 0 0-2.492 20.478c0 38.459 25.662 70.919 60.737 81.006 35.075-10.087 60.738-42.547 60.738-81.006 0-7.071-.866-13.93-2.493-20.478-22.009-1.16-42.166-9.387-58.245-22.453-16.079 13.066-36.235 21.293-58.245 22.453Z"
-        fill="#8B5CF6"
-      />
-      <path
-        d="M275.081 58.045c-10.205 0-18.126 3.828-22.696 10.718V29.564h-19.65v107.184h19.65V95.406c0-13.321 7.159-18.987 16.756-18.987 8.835 0 15.08 5.36 15.08 15.772v44.557h19.65V89.741c0-20.365-12.643-31.696-28.79-31.696Zm59.125 48.539h57.426c.457-2.603.762-5.206.762-8.116 0-22.508-15.994-40.423-38.538-40.423-23.916 0-40.214 17.609-40.214 40.423 0 22.815 16.146 40.424 41.737 40.424 14.623 0 26.048-5.972 33.207-16.384l-15.842-9.187c-3.351 4.441-9.444 7.656-17.06 7.656-10.359 0-18.737-4.287-21.478-14.393Zm-.305-15.312c2.285-9.8 9.444-15.465 19.955-15.465 8.225 0 16.451 4.44 18.888 15.465h-38.843Zm88.817-17.915V60.188h-19.65v76.56h19.65v-36.595c0-16.078 12.948-20.671 23.153-19.446v-22.05c-9.596 0-19.193 4.288-23.153 14.7Zm65.027 65.535c22.392 0 40.366-17.609 40.366-40.424 0-22.814-17.974-40.423-40.366-40.423s-40.214 17.609-40.214 40.423c0 22.815 17.822 40.424 40.214 40.424Zm0-19.293c-11.577 0-20.564-8.728-20.564-21.13 0-12.403 8.987-21.131 20.564-21.131 11.729 0 20.716 8.728 20.716 21.13 0 12.403-8.987 21.131-20.716 21.131Zm60.892-68.598c6.702 0 12.186-5.512 12.186-12.096 0-6.584-5.484-12.25-12.186-12.25-6.55 0-12.034 5.666-12.034 12.25a12.255 12.255 0 0 0 3.561 8.517 12.126 12.126 0 0 0 8.473 3.58Zm-9.749 85.747h19.65v-76.56h-19.65v76.56Zm70.842 2.144c14.928 0 27.876-7.962 34.426-19.905l-17.06-9.8c-3.047 6.278-9.597 10.106-17.518 10.106-11.729 0-20.412-8.728-20.412-20.825 0-12.25 8.683-20.977 20.412-20.977 7.769 0 14.319 3.981 17.365 10.26l16.908-9.954c-6.245-11.79-19.193-19.752-34.121-19.752-23.153 0-40.214 17.609-40.214 40.423 0 22.815 17.061 40.424 40.214 40.424Zm76.833 0c22.391 0 40.366-17.609 40.366-40.424 0-22.814-17.975-40.423-40.366-40.423-22.392 0-40.214 17.609-40.214 40.423 0 22.815 17.822 40.424 40.214 40.424Zm0-19.293c-11.577 0-20.564-8.728-20.564-21.13 0-12.403 8.987-21.131 20.564-21.131 11.729 0 20.716 8.728 20.716 21.13 0 12.403-8.987 21.131-20.716 21.131Zm93.49-61.554c-10.206 0-18.127 3.828-22.697 10.718v-8.575h-19.65v76.56h19.65V95.406c0-13.321 7.159-18.987 16.756-18.987 8.835 0 15.08 5.36 15.08 15.772v44.557h19.65V89.741c0-20.365-12.643-31.696-28.789-31.696ZM840.7 81.93c0-4.134 3.96-6.277 8.835-6.277 5.636 0 9.901 2.909 12.186 7.809l16.756-9.188c-5.941-10.565-16.604-16.23-28.942-16.23-15.69 0-28.942 8.728-28.942 24.346 0 26.949 39.3 20.824 39.3 32.002 0 4.44-4.265 6.584-10.51 6.584-7.617 0-12.796-3.675-14.928-9.953l-17.061 9.647c5.484 11.79 16.756 18.221 31.989 18.221 16.298 0 30.617-7.962 30.617-24.499 0-28.174-39.3-21.13-39.3-32.462Z"
-        fill="#0F172A"
-      />
-    </svg>
+    <span className="">
+      <svg className="inline-block h-6 w-6 fill-orange-500 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 455 514" data-v-5d42b9bc="">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M57.907,374.126L72.029,431.186C83.42,471.402 159.457,492.736 246.368,492.736C332.371,492.736 410.326,470.957 420.715,431.186L434.836,374.119C374.672,399.95 310.568,413.157 246.36,413.157C182.168,413.156 118.063,399.949 57.907,374.126Z M302.034,163.472C288.636,162.033 278.463,150.729 278.463,137.259L278.463,137.22C278.463,120.16 283.654,103.675 293.374,89.657C299.773,80.431 303.522,69.231 303.522,57.156C303.523,25.584 277.939,0 246.368,0C214.805,0 189.212,25.584 189.212,57.155C189.212,69.23 192.962,80.43 199.362,89.656C209.049,103.62 214.271,120.224 214.271,137.219L214.271,137.258C214.271,150.76 204.123,162.024 190.701,163.471C104.698,172.754 28.374,203.457 28.374,253.058C28.374,259.935 49.07,338.424 49.07,338.424C173.554,399.327 319.189,399.336 443.672,338.416C443.672,338.416 464.36,259.934 464.36,253.058C464.361,203.458 388.038,172.755 302.034,163.472ZM246.368,31.077C260.998,31.077 272.86,42.937 272.86,57.569C272.86,72.199 260.998,84.061 246.368,84.061C231.737,84.061 219.876,72.199 219.876,57.569C219.877,42.938 231.737,31.077 246.368,31.077ZM246.368,191.963C358.544,191.963 427.425,227.553 427.425,253.059C427.425,278.58 358.545,314.162 246.368,314.162C134.191,314.162 65.31,278.58 65.31,253.059C65.31,227.553 134.191,191.963 246.368,191.963Z" />
+      </svg>
+      <span class="text-black font-extrabold">
+        {packageName}
+      </span>
+    </span>
   )
 }
 
@@ -74,8 +64,8 @@ function Button({ className, ...props }) {
 
 function ShareButton({ children = 'Share on Twitter' }) {
   let href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
-    'Check out Heroicons by @steveschoger and the @tailwindcss team 😍'
-  )}&url=${encodeURIComponent('https://heroicons.com')}`
+    'Check out Wellness Icons by @saunaworlds 😍'
+  )}&url=${encodeURIComponent('https://wellness-icons.saunaworlds.com')}`
 
   return (
     <Button href={href}>
@@ -330,7 +320,7 @@ function Header() {
                 aria-label="Version"
                 className="flex items-center rounded-full border border-slate-700/10 bg-slate-100 py-1.5 pl-2.5 pr-3 text-xs font-semibold text-slate-500 transition hover:border-slate-700/20"
               >
-                v2.0.0
+                v{latestVersion}
                 <svg viewBox="0 0 6 3" className="ml-2 w-1.5 overflow-visible">
                   <path
                     d="M0 0L3 3L6 0"
@@ -344,8 +334,8 @@ function Header() {
               </Menu.Button>
               <Menu.Items className="absolute top-full mt-1 w-40 rounded-lg bg-white py-2 text-sm font-semibold leading-6 text-slate-700 shadow ring-1 ring-slate-900/5">
                 <Menu.Item disabled>
-                  <span className="flex items-center justify-between px-3 py-1 text-violet-500">
-                    v2.0.0
+                  <span className="flex items-center justify-between px-3 py-1 text-orange-500">
+                    v{latestVersion}
                     <svg
                       viewBox="0 0 24 24"
                       fill="none"
@@ -362,19 +352,6 @@ function Header() {
                     </svg>
                   </span>
                 </Menu.Item>
-                <Menu.Item>
-                  {({ active }) => (
-                    <Link
-                      href="https://v1.heroicons.com"
-                      className={clsx(
-                        'block px-3 py-1',
-                        active && 'bg-slate-50 text-slate-900'
-                      )}
-                    >
-                      v1.0.6
-                    </Link>
-                  )}
-                </Menu.Item>
               </Menu.Items>
             </Menu>
           </div>
@@ -385,7 +362,7 @@ function Header() {
         <div className="flex justify-center text-center lg:pt-5 lg:pb-7 lg:text-left">
           <div className="flex max-w-[37rem] flex-col py-16 lg:pt-12 lg:pb-11">
             <h1 className="mt-6 text-[1.75rem] font-extrabold leading-9 tracking-tight text-slate-900 md:text-4xl">
-              Beautiful hand-crafted SVG icons, by the makers of Tailwind CSS.
+              Sauna and Wellness SVG icons.
             </h1>
             <div className="order-first flex items-center justify-center gap-4 text-[0.8125rem] leading-6 text-slate-500 lg:justify-start">
               <p>{`${icons1.length} icons`}</p>
@@ -407,7 +384,7 @@ function Header() {
               <p>React &amp; Vue libraries</p>
             </div>
             <div className="mt-10 flex justify-center gap-8 lg:justify-start">
-              <Button href="https://github.com/tailwindlabs/heroicons">
+              <Button href={githubUrl}>
                 <svg
                   viewBox="0 0 24 24"
                   aria-hidden="true"
@@ -420,41 +397,6 @@ function Header() {
                   />
                 </svg>
                 Documentation
-              </Button>
-              <Button href="https://www.figma.com/community/file/1143911270904274171">
-                <svg
-                  viewBox="0 0 24 24"
-                  strokeWidth=".895"
-                  aria-hidden="true"
-                  className="h-6 w-6"
-                >
-                  <path
-                    d="M11.554 4v-.447H8.738a2.553 2.553 0 1 0 0 5.105H11.554V4Z"
-                    fill="#DF5A33"
-                    stroke="#DF5A33"
-                  />
-                  <path
-                    d="M11.554 9.895v-.448H8.738a2.553 2.553 0 0 0 0 5.106H11.554V9.895Z"
-                    fill="#985CF7"
-                    stroke="#985CF7"
-                  />
-                  <path
-                    d="M11.554 15.79v-.448H8.738a2.553 2.553 0 0 0 0 5.105h.132a2.684 2.684 0 0 0 2.684-2.684V15.79Z"
-                    fill="#5ECC89"
-                    stroke="#5ECC89"
-                  />
-                  <path
-                    d="M15.262 9.447a2.553 2.553 0 1 1 0 5.106h-.263a2.553 2.553 0 0 1 0-5.106h.263Z"
-                    fill="#57B9F8"
-                    stroke="#57B9F8"
-                  />
-                  <path
-                    d="M12.446 4v-.447H15.262a2.553 2.553 0 1 1 0 5.105H12.446V4Z"
-                    fill="#EE7A69"
-                    stroke="#EE7A69"
-                  />
-                </svg>
-                Get Figma File
               </Button>
             </div>
           </div>
@@ -694,7 +636,7 @@ function Icon({ icon }) {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <p className="absolute inset-x-0 bottom-10 text-center text-[0.8125rem] font-semibold leading-6 text-violet-500">
+          <p className="absolute inset-x-0 bottom-10 text-center text-[0.8125rem] font-semibold leading-6 text-orange-500">
             Copied!
           </p>
         </Transition>
@@ -775,16 +717,6 @@ const TabList = forwardRef(function TabList(
           '24x24, 1.5px stroke',
           'For primary navigation and marketing sections, with an outlined appearance.',
         ],
-        [
-          'Solid',
-          '24x24, Solid fill',
-          'For primary navigation and marketing sections, with a filled appearance.',
-        ],
-        [
-          'Mini',
-          '20x20, Solid fill',
-          'For smaller elements like buttons, form elements, and to support text.',
-        ],
       ].map(([type, details, description], index) => (
         <div
           key={type}
@@ -801,7 +733,7 @@ const TabList = forwardRef(function TabList(
               <span
                 className={clsx(
                   'font-semibold',
-                  selectedIndex === index ? 'text-violet-500' : 'text-slate-900'
+                  selectedIndex === index ? 'text-orange-500' : 'text-slate-900'
                 )}
               >
                 {type}
@@ -829,9 +761,9 @@ function TabListSmall({ enabled = true, selectedIndex }) {
   return (
     <List
       aria-hidden={!enabled}
-      className="grid grid-cols-3 gap-0.5 rounded-lg bg-slate-400/10 text-center text-[0.8125rem] font-semibold leading-6 text-slate-600 shadow-[0_1px_2px_rgba(15,23,42,0.04)] ring-1 ring-slate-900/5"
+      className="grid grid-cols-1 gap-0.5 rounded-lg bg-slate-400/10 text-center text-[0.8125rem] font-semibold leading-6 text-slate-600 shadow-[0_1px_2px_rgba(15,23,42,0.04)] ring-1 ring-slate-900/5"
     >
-      {['Outline', 'Solid', 'Mini'].map((type, typeIndex, types) => (
+      {['Outline'].map((type, typeIndex, types) => (
         <Item
           key={type}
           className={clsx(
@@ -839,7 +771,7 @@ function TabListSmall({ enabled = true, selectedIndex }) {
             typeIndex === 0 && 'rounded-l-lg',
             typeIndex === types.length - 1 && 'rounded-r-lg',
             selectedIndex === typeIndex
-              ? 'bg-slate-50 text-violet-500'
+              ? 'bg-slate-50 text-orange-500'
               : 'bg-white hover:bg-slate-50 hover:text-slate-700'
           )}
         >
@@ -955,8 +887,8 @@ function Icons({ icons, query }) {
         <p className="mt-1">
           If you can’t find what you’re looking for{' '}
           <Link
-            href="https://github.com/tailwindlabs/heroicons/discussions/new?category=ideas"
-            className="font-semibold text-violet-600"
+            href={githubUrl+'/discussions/new?category=ideas'}
+            className="font-semibold text-orange-600"
           >
             make a suggestion on GitHub.
           </Link>
@@ -1098,30 +1030,30 @@ export default function Home() {
                   <Tab.Panel className="focus:outline-none">
                     <Icons icons={icons1} query={query} />
                   </Tab.Panel>
-                  <Tab.Panel className="focus:outline-none">
-                    <Icons icons={icons2} query={query} />
-                  </Tab.Panel>
-                  <Tab.Panel className="focus:outline-none">
-                    <Icons icons={icons3} query={query} />
-                  </Tab.Panel>
                 </Tab.Panels>
                 <footer className="flex flex-col items-center justify-between gap-10 border-t border-slate-400/20 pt-10 pb-20 sm:flex-row">
                   <p className="flex items-center gap-3 text-[0.8125rem] leading-6 text-slate-900">
-                    <svg width="30" height="18" aria-hidden="true">
-                      <path
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M15 0c-4 0-6.5 2-7.5 6 1.5-2 3.25-2.75 5.25-2.25 1.141.285 1.957 1.113 2.86 2.03C17.08 7.271 18.782 9 22.5 9c4 0 6.5-2 7.5-6-1.5 2-3.25 2.75-5.25 2.25-1.141-.285-1.957-1.113-2.86-2.03C20.42 1.728 18.718 0 15 0ZM7.5 9C3.5 9 1 11 0 15c1.5-2 3.25-2.75 5.25-2.25 1.141.285 1.957 1.113 2.86 2.03C9.58 16.271 11.282 18 15 18c4 0 6.5-2 7.5-6-1.5 2-3.25 2.75-5.25 2.25-1.141-.285-1.957-1.113-2.86-2.03C12.92 10.729 11.218 9 7.5 9Z"
-                        fill="#38BDF8"
-                      />
-                    </svg>
                     <span>
                       By the makers of{' '}
                       <a
-                        href="https://tailwindcss.com"
+                        href="https://saunaworlds.com"
                         className="font-semibold"
                       >
-                        tailwindcss
+                        Saunaworlds
+                      </a>.
+                      Icons designed by the amazing{' '}
+                      <a
+                        href="https://www.robertalanzetti.it/"
+                        className="font-semibold"
+                      >
+                        Roberta Lanzetti
+                      </a>.
+                      Codebase is a fork of{' '}
+                      <a
+                        href="https://github.com/tailwindlabs/heroicons"
+                        className="font-semibold"
+                      >
+                        tailwindlabs/heroicons
                       </a>
                     </span>
                   </p>

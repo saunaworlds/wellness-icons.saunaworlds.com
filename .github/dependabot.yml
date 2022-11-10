@@ -5,7 +5,7 @@ updates:
     schedule:
       interval: "daily"
     allow:
-      - dependency-name: "heroicons"
+      - dependency-name: "wellness-icons"
       - dependency-name: "tailwindcss"
       - dependency-name: "@headlessui/*"
     labels:
