@@ -7,6 +7,7 @@ const nextConfig = {
     scrollRestoration: true,
     images: {
       allowFutureImage: true,
+      unoptimized: true,
     },
   },
   webpack(config) {
