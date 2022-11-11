@@ -23,7 +23,7 @@ function importIcons(r, attrs) {
 }
 
 const icons1 = importIcons(
-  require.context(`heroicons/24/outline/`, false, /\.svg$/),
+  require.context(`wellness-icons/24/outline/`, false, /\.svg$/),
   'class="w-6 h-6"'
 )
 
