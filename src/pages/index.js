@@ -714,7 +714,7 @@ const TabList = forwardRef(function TabList(
       {[
         [
           'Outline',
-          '24x24, 1.5px stroke',
+          '24x24, 1px stroke',
           'For primary navigation and marketing sections, with an outlined appearance.',
         ],
       ].map(([type, details, description], index) => (
